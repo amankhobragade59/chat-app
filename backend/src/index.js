@@ -9,13 +9,7 @@ import {app,server} from './lib/socket.js'
 import path from 'path'
 
 const __dirname = path.resolve();
-if(process.env.NODE_ENV === "production"){
-    app.use(express.static(path.join(__dirname,"../frontend/dist")));
 
-    app.get("*",(req,res)=>{
-    res.sendFile(path.join(__dirname,"../frontend","dist","index.html"));
-})
-}
 
 dotenv.config();
 // const app = express(); removed cause initialize in server too
@@ -35,7 +29,14 @@ app.use(cors({
 app.use("/api/auth",authRoutes)
 app.use("/api/message",messageRoutes)
 
+//for server rendering
+if(process.env.NODE_ENV === "production"){
+    app.use(express.static(path.join(__dirname,"../frontend/dist")));
 
+    app.get("*",(req,res)=>{
+    res.sendFile(path.join(__dirname,"../frontend","dist","index.html"));
+})
+}
 
 const PORT = process.env.PORT;
 server.listen(PORT,()=>{// used server.listen instead of app.listen

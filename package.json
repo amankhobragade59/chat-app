@@ -1,20 +1,25 @@
 {
+  "name": "chat-app(project)---copy",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-  "build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
-  "start": "npm install --prefix backend && npm run start --prefix backend"
-},
-
+    "build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
+    "start": "npm run start --prefix backend",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amankhobragade59/chat-app.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
-  "devDependencies": {
-    "concurrently": "^9.2.0"
+  "bugs": {
+    "url": "https://github.com/amankhobragade59/chat-app/issues"
   },
+  "homepage": "https://github.com/amankhobragade59/chat-app#readme",
+  "description": "",
   "dependencies": {
-    "cloudinary": "^2.7.0",
-    "daisyui": "^5.0.43"
+    "prefix": "^1.0.0"
   }
 }

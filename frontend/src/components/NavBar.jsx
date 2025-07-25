@@ -63,7 +63,7 @@ const NavBar = () => {
                 <>
                   <Link to={"/profile"} className='btn btn-sm gap-2'>
                     <UserCheck className='size-5' />
-                    <span className="hidden sm:inline">Profile</span>
+                    <span className="hidden sm:inline font-bold ">{authUser.fullName.split(" ")[0]}</span>
                   </Link>
 
                   <button className='flex gap-2 items-center' onClick={logout}>

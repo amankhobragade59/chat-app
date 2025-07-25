@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import ChatHeader from './ChatHeader'
 import { useChatStore } from '../store/useChatStore';
-import { Image, Send, XIcon } from 'lucide-react';
+import { Image, Send, XIcon, CircleDashed } from 'lucide-react';
 import { useRef } from 'react';
 import toast from 'react-hot-toast'
 
@@ -9,7 +9,7 @@ const MessageInput = () => {
     const [text,setText] =useState("");
     const [imagePreview, setImagePreview] = useState(null);
     const fileInputRef = useRef(null);
-    const {sendMessages} = useChatStore();
+    const {sendMessages,isSendingMessage} = useChatStore();
 
     const handleImageChange=(e)=>{
         const file = e.target.files[0];
@@ -73,8 +73,8 @@ const MessageInput = () => {
                     </button>
             </div>
 
-            <button type='submit' className='btn btn-sm btn-circle' disabled={!text.trim()&&!imagePreview}>
-                <Send size={22}/>
+            <button type='submit' className='btn btn-sm btn-circle' disabled={(!text.trim()&&!imagePreview) || isSendingMessage}>
+                {isSendingMessage?<CircleDashed className='animate-spin w-12 h-12'/>:<Send size={22}/>}
             </button>
          </form>
     </div>
